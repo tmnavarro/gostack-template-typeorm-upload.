@@ -24,7 +24,7 @@ class Transaction {
   @Column('decimal')
   value: number;
 
-  @ManyToOne(() => Category)
+  @ManyToOne(type => Category)
   @JoinColumn({ name: 'category_id' })
   category: Category;
 

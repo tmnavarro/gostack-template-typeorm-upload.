@@ -15,7 +15,9 @@ const upload = muter(uploadConfig);
 transactionsRouter.get('/', async (request, response) => {
   const transactionReponsitory = getCustomRepository(TransactionsRepository);
 
-  const transactions = await transactionReponsitory.find();
+  const transactions = await transactionReponsitory.find({
+    relations: ['category'],
+  });
   const balance = await transactionReponsitory.getBalance();
 
   return response.json({ transactions, balance });
